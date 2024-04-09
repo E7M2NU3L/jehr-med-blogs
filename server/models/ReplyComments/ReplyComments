@@ -1,0 +1,23 @@
+const mongoose = require('mongoose');
+
+// Schema
+const ReplyCommentSchema = mongoose.Schema({
+    CommentBody: {
+        type: String,
+        required: true,
+    },
+    Likes: {
+        type: Number,
+        default: 0,
+    },
+    Author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }
+}, {
+    timestamps: true,
+});
+
+const ReplyComment = mongoose.Model("ReplyComment", ReplyCommentSchema);
+
+module.exports = ReplyComment; 
